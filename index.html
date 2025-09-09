@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>韓語學習小站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#ff6680">
+  <style>
+    body { font-family: "Microsoft JhengHei", sans-serif; margin: 0; background: #fdfdfd; }
+    header { background: #ff6680; color: white; padding: 15px; text-align: center; }
+    nav { background: #ffe6eb; padding: 10px; text-align: center; }
+    nav a { margin: 0 10px; text-decoration: none; color: #333; font-weight: bold; }
+    section { padding: 20px; }
+    h2 { color: #ff6680; }
+    .korean { font-size: 20px; font-weight: bold; cursor: pointer; }
+    .box { background: #fff7f9; padding: 10px; border-radius: 6px; margin: 10px 0; }
+    footer { background: #ff6680; color: white; text-align: center; padding: 10px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>韓語學習小站</h1>
+    <p>為台灣人設計的簡單入門工具</p>
+  </header>
+
+  <nav>
+    <a href="#alphabet">字母表</a>
+    <a href="#phrases">常用語</a>
+  </nav>
+
+  <section id="alphabet">
+    <h2>韓文字母表</h2>
+    <div class="box">
+      <p><b>母音：</b> 
+        <span class="korean" onclick="speak('ㅏ')">ㅏ</span> 
+        <span class="korean" onclick="speak('ㅓ')">ㅓ</span> 
+        <span class="korean" onclick="speak('ㅗ')">ㅗ</span> 
+        <span class="korean" onclick="speak('ㅜ')">ㅜ</span>
+      </p>
+      <p><b>子音：</b> 
+        <span class="korean" onclick="speak('ㄱ')">ㄱ</span> 
+        <span class="korean" onclick="speak('ㄴ')">ㄴ</span> 
+        <span class="korean" onclick="speak('ㄷ')">ㄷ</span> 
+        <span class="korean" onclick="speak('ㅂ')">ㅂ</span>
+      </p>
+    </div>
+  </section>
+
+  <section id="phrases">
+    <h2>常用生活用語</h2>
+    <div class="box">
+      <p><span class="korean" onclick="speak('안녕하세요')">안녕하세요</span> = 你好</p>
+      <p><span class="korean" onclick="speak('감사합니다')">감사합니다</span> = 謝謝</p>
+      <p><span class="korean" onclick="speak('얼마예요?')">얼마예요?</span> = 多少錢？</p>
+      <p><span class="korean" onclick="speak('맛있어요')">맛있어요</span> = 很好吃</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 韓語學習小站</p>
+  </footer>
+
+  <script>
+    function speak(text) {
+      const msg = new SpeechSynthesisUtterance(text);
+      msg.lang = "ko-KR"; 
+      window.speechSynthesis.speak(msg);
+    }
+
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js");
+    }
+  </script>
+</body>
+</html>
